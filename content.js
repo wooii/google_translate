@@ -175,30 +175,29 @@ function getSelectionPosition() {
 
     // Function to adjust popup size
     function adjustPopupSize() {
-      const selectionRect = getSelectionRect();
-      const popupContent = popup.querySelector('.popup-content');
+        const selectionRect = getSelectionRect();
+        const popupContent = popup.querySelector('.popup-content');
 
-      // Set minimum width to selection width or 100px, whichever is larger
-      const minWidth = Math.max(selectionRect.width, 100);
-      popup.style.minWidth = `${minWidth}px`;
-      popup.style.maxWidth = '400px'; // Set a maximum width to prevent oversized popups
+        // Set minimum width to selection width or 200px, whichever is larger
+        const minWidth = Math.max(selectionRect.width, 200);
+        popup.style.minWidth = `${minWidth}px`;
+        popup.style.maxWidth = '400px'; // Set a maximum width to prevent oversized popups
 
-      // Adjust popup position
-      popup.style.left = `${selectionRect.left}px`;
-      popup.style.top = `${selectionRect.top}px`;
+        // Adjust popup position to cover the search button
+        popup.style.left = `${selectionRect.left}px`;
+        popup.style.top = `${selectionRect.top}px`; // Move it up slightly to cover the search button
 
-      // Check if popup goes beyond the right edge of the viewport
-      const rightEdge = selectionRect.left + popup.offsetWidth;
-      if (rightEdge > window.innerWidth) {
-        popup.style.left = `${window.innerWidth - popup.offsetWidth - 10}px`;
+        // Check if popup goes beyond the right edge of the viewport
+        const rightEdge = selectionRect.left + popup.offsetWidth;
+        if (rightEdge > window.innerWidth) {
+          popup.style.left = `${window.innerWidth - popup.offsetWidth - 5}px`;
+        }
+
+        // Check if popup goes beyond the top edge of the viewport
+        if (parseInt(popup.style.top) < 0) {
+          popup.style.top = '0px';
+        }
       }
-
-      // Check if popup goes beyond the bottom edge of the viewport
-      const bottomEdge = selectionRect.top + popup.offsetHeight;
-      if (bottomEdge > window.innerHeight) {
-        popup.style.top = `${selectionRect.top - popup.offsetHeight - 10}px`;
-      }
-    }
 
     // Add styles for the pop-up
     const styles = `
