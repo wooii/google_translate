@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Google Translate",
+  "version": "0.1",
+  "description": "Translate selected text to Chinese using Google Translate.",
+  "permissions": ["contextMenus", "activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
+
+
