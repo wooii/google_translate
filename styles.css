@@ -1,0 +1,41 @@
+#translation-popup {
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2147483647;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+  }
+  .popup-content {
+    font-size: 14px;
+    color: black;
+  }
+  .popup-content a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #1a73e8;
+  }
+  .popup-content a:hover {
+    text-decoration: underline;
+  }
+
+#selected-text {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#pronounce-button {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#pronounce-button:hover {
+  background-color: #026ec1;
+}
