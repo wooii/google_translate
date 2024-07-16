@@ -1,10 +1,10 @@
 # Google Translate Extension
 
-Translate selected text to Chinese using Google Translate.
+Translate selected text using Google Translate.
 
 ## Features
 
-- Translate selected text to Chinese with a single click
+- Translate selected text with a single click
 - Pop-up translation window
 - Text-to-speech functionality for the original text
 - Link to full Google Translate page for more options
@@ -28,7 +28,7 @@ Translate selected text to Chinese using Google Translate.
 4. The pop-up will show:
    - The original text
    - A speaker icon (🔊) to hear the pronunciation
-   - The Chinese translation
+   - The translation
    - A "More" link to open the full Google Translate page
 
 ## Contributing
