@@ -110,7 +110,7 @@
       fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(selectedText)}`)
         .then(response => response.json())
         .then(data => {
-          const translation = data[0][0][0];
+          const translation = data[0].map(item => item[0]).join(' ');
           const translateUrl = `https://translate.google.com/?sl=auto&tl=${targetLanguage}&text=${encodeURIComponent(selectedText)}&op=translate`;
 
           if (popup) {
