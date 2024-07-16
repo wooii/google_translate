@@ -1,28 +1,34 @@
 // background.js
 
+const TRANSLATE = 'translate';
+const DEFAULT_TARGET_LANGUAGE = 'en';
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    id: "translate",
+    id: TRANSLATE,
     title: "Translate",
     contexts: ["selection"]
   });
 
-  chrome.storage.sync.get('targetLanguage', (data) => {
-    if (!data.targetLanguage) {
-      chrome.storage.sync.set({ targetLanguage: 'en' });
+  chrome.storage.sync.get('targetLanguage', ({ targetLanguage }) => {
+    if (!targetLanguage) {
+      chrome.storage.sync.set({ targetLanguage: DEFAULT_TARGET_LANGUAGE });
     }
   });
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "translate") {
-    const selectedText = info.selectionText;
-    chrome.tabs.sendMessage(tab.id, { action: 'translate', text: selectedText });
+  if (info.menuItemId === TRANSLATE) {
+    handleTranslate(info.selectionText, tab.id);
   }
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'translate') {
-    chrome.tabs.sendMessage(sender.tab.id, { action: 'translate', text: request.text });
+  if (request.action === TRANSLATE) {
+    handleTranslate(request.text, sender.tab.id);
   }
 });
+
+function handleTranslate(text, tabId) {
+  chrome.tabs.sendMessage(tabId, { action: TRANSLATE, text });
+}
