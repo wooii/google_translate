@@ -3,8 +3,14 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "translate",
-    title: "Translate to Chinese",
+    title: "Translate",
     contexts: ["selection"]
+  });
+
+  chrome.storage.sync.get('targetLanguage', (data) => {
+    if (!data.targetLanguage) {
+      chrome.storage.sync.set({ targetLanguage: 'en' });
+    }
   });
 });
 

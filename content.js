@@ -105,32 +105,35 @@
       addPopupEventListeners();
     });
 
-    fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=zh-CN&dt=t&q=${encodeURIComponent(selectedText)}`)
-      .then(response => response.json())
-      .then(data => {
-        const translation = data[0][0][0];
-        const translateUrl = `https://translate.google.com/?sl=auto&tl=zh-CN&text=${encodeURIComponent(selectedText)}&op=translate`;
+    chrome.storage.sync.get('targetLanguage', (data) => {
+      const targetLanguage = data.targetLanguage || 'en';
+      fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(selectedText)}`)
+        .then(response => response.json())
+        .then(data => {
+          const translation = data[0][0][0];
+          const translateUrl = `https://translate.google.com/?sl=auto&tl=${targetLanguage}&text=${encodeURIComponent(selectedText)}&op=translate`;
 
-        if (popup) {
-          requestAnimationFrame(() => {
-            popup.querySelector('.popup-content').innerHTML = `
-              <span id="selected-text">${selectedText}</span>
-              <button id="pronounce-button">🔊</button>
-              <p id="translation-text">${translation}</p>
-              <a href="${translateUrl}" target="_blank">More</a>
-            `;
-            setVoiceForPronunciation(selectedText);
-            adjustPopupSize();
-          });
-        }
-      })
-      .catch(error => {
-        if (popup) {
-          requestAnimationFrame(() => {
-            popup.querySelector('#translation-text').innerText = 'Error translating text';
-          });
-        }
-      });
+          if (popup) {
+            requestAnimationFrame(() => {
+              popup.querySelector('.popup-content').innerHTML = `
+                <span id="selected-text">${selectedText}</span>
+                <button id="pronounce-button">🔊</button>
+                <p id="translation-text">${translation}</p>
+                <a href="${translateUrl}" target="_blank">More</a>
+              `;
+              setVoiceForPronunciation(selectedText);
+              adjustPopupSize();
+            });
+          }
+        })
+        .catch(error => {
+          if (popup) {
+            requestAnimationFrame(() => {
+              popup.querySelector('#translation-text').innerText = 'Error translating text';
+            });
+          }
+        });
+    });
   }
 
   function getVoices() {

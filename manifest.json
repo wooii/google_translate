@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Google Translate",
   "version": "0.1",
-  "description": "Translate selected text to Chinese using Google Translate.",
-  "permissions": ["contextMenus", "activeTab", "scripting"],
+  "description": "Translate selected text using Google Translate.",
+  "permissions": ["contextMenus", "activeTab", "scripting", "storage"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -14,8 +14,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html"
-  }
+    "default_popup": "options.html"
+  },
+  "options_page": "options.html"
 }
-
-
