@@ -9,16 +9,6 @@ Translate selected text using Google Translate.
 - Text-to-speech for original text
 - Link to full Google Translate page
 
-## Installation
-
-1. Download all files in this repository and store them in a single folder.
-2. Open Chrome or Edge browser.
-3. Navigate to the extensions page:
-   - Chrome: `chrome://extensions/`
-   - Edge: `edge://extensions/`
-4. Enable "Developer mode".
-5. Click "Load unpacked" and select the folder containing the extension files.
-
 ## How to Use
 
 1. Set the target language in the extension options.
@@ -29,6 +19,16 @@ Translate selected text using Google Translate.
    - Pronunciation (🔊)
    - Translation
    - "More" link to Google Translate
+
+## Installation (For Development)
+
+1. Download all files in this repository and store them in a single folder.
+2. Open Chrome or Edge browser.
+3. Navigate to the extensions page:
+   - Chrome: `chrome://extensions/`
+   - Edge: `edge://extensions/`
+4. Enable "Developer mode".
+5. Click "Load unpacked" and select the folder containing the extension files.
 
 ## License
 
