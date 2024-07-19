@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Google Translate",
+  "name": "A Translator",
   "version": "0.1",
   "description": "Translate selected text using Google Translate.",
   "permissions": ["contextMenus", "activeTab", "scripting", "storage"],
