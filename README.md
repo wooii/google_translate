@@ -20,6 +20,9 @@ Translate selected text using Google Translate.
    - Translation
    - "More" link to Google Translate
 
+## Installation (For Edge)
+Get it from Microsoft Edge Add-ons: [A Translator](https://microsoftedge.microsoft.com/addons/detail/a-translator/ocnfikpoagmgjappgpigidpimbljpipo)
+
 ## Installation (For Development)
 
 1. Download all files in this repository and store them in a single folder.
